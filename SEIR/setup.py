@@ -84,7 +84,7 @@ class COVID19Parameters():
         # time from symptom onset to recovery per compartiment
         self.gamma = np.random.uniform(1/6, 1/2.6, s.nbetas) * n_Icomp  # range of serial from 8.2 to 6.5
         
-        if 'low' in s.setup_name: self.R0s = np.random.uniform(1.5, 2, s.nbetas)   # np.random.uniform(1.5, 2, nbetas)
+        if 'low' in s.setup_name: self.R0s = np.random.uniform(.6, 1.3, s.nbetas)   # np.random.uniform(1.5, 2, nbetas)
         if 'mid' in s.setup_name: self.R0s = np.random.uniform(2, 3, s.nbetas)
 
         self.betas = np.multiply(self.R0s, self.gamma) / n_Icomp

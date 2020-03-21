@@ -33,25 +33,24 @@ def onerun_SEIR(s, uid):
     r_source(s.script_npi)
     npi = robjects.r['NPI'].T
     #p.addNPIfromR(npi)
-
-    #r_assign('region', s.spatset.setup_name)
-    #r_source(s.script_import)
-    #importation = robjects.r['county_importations_total']
-    #importation = importation.pivot(index='date', columns='fips_cty', values='importations')
-    #importation = importation.fillna(value = 0)
-    #importation.index = pd.to_datetime(importation.index)
-    #importation.columns = pd.to_numeric(importation.columns)
-    #for col in s.spatset.data['geoid']:
-    #    if col not in importation.columns:
-    #        importation[col] = 0
-    #importation = importation.reindex(sorted(importation.columns), axis=1)
-    #idx = pd.date_range(s.ti, s.tf)
-    #importation = importation.reindex(idx, fill_value=0)
-    #importation = importation.to_numpy()
-    importation = np.zeros((s.t_span+3, s.nnodes))
+    importation = pd.read_csv('data/utah/UT_COVID19_Data_03202020.csv')
+    importation.drop('County', axis = 1,inplace=True)
+    importation = importation.pivot(index='Date', columns='GEOID', values='New Cases')
+    importation = importation.fillna(value = 0)
+    importation.columns = pd.to_numeric(importation.columns)
+    for col in s.spatset.data['geoid']:
+        if col not in importation.columns:
+            importation[col] = 0
+    importation = importation.reindex(sorted(importation.columns), axis=1)
+    idx = pd.date_range(s.ti, s.tf)
+    importation.index = pd.to_datetime(importation.index)
+    importation = importation.reindex(idx, fill_value=0)
+    importation = importation.to_numpy()
+    y0 = np.zeros((ncomp, s.nnodes))
+    y0[S,:] = s.popnodes
 
     states = steps_SEIR_nb(setup.parameters_quick_draw(s, npi),
-                            s.buildICfromfilter(), 
+                            y0, 
                             uid,
                             s.dt,
                             s.t_inter,
