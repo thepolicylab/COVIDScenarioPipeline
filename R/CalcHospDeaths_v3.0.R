@@ -244,10 +244,10 @@ build_hospdeath_summarize <- function(res,
   # Summarization starts here
   
   res_metro <- res %>%
-    filter(!is.na(time) & !is.na(metrop_labels)) %>% 
+    filter(!is.na(time) & !is.na(geoid)) %>% 
     mutate(time = as.Date(time)) %>%
     filter(time <= as.Date(end_date)) %>%
-    group_by(metrop_labels, sim_num) %>% 
+    group_by(geoid, sim_num) %>% 
     summarize(
       # nInf = sum(incidI, na.rm = TRUE), 
       nhosp = sum(incidH, na.rm = TRUE), 
@@ -261,7 +261,7 @@ build_hospdeath_summarize <- function(res,
       maxVentCap = max(vent_curr, na.rm=TRUE)
     ) %>%
     ungroup() %>% 
-    group_by(metrop_labels) %>% 
+    group_by(geoid) %>% 
     summarize(#nInf_final = mean(nInf),
       #nInf_lo = quantile(nInf, 0.25),
       #nInf_hi = quantile(nInf, 0.75),
@@ -800,7 +800,7 @@ build_hospdeath_SLOWVERSION <- function(data, p_hosp, p_death, p_vent, p_ICU,
         ) %>%
         mutate(geoid = substr(county_sim,1,length_geoid),
                sim_num= substr(county_sim,length_geoid+2,length_geoid+7)) %>%
-        left_join(data %>% select(geoid, metrop_labels) %>% distinct(), by='geoid')
+        left_join(data %>% select(geoid) %>% distinct(), by='geoid')
     
     return(res)
 }
