@@ -70,7 +70,7 @@ load_hosp_sims <- function(scenario_dir, pdeath = "low") {
     for (i in 1:length(files)) {
         file <- files[i]
         suppressMessages(tmp <- read_csv(file))
-        
+        		tmp <- tmp %>% mutate(sim_num = i)
         rc[[i]] <- tmp
     }
     
