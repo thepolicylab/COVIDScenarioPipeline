@@ -659,32 +659,100 @@ make_finalsize_table1 <- function(scenario_dat, final_date = "2020-04-01"){
 ##'
 make_metrop_labels <- function(data=county_dat){
     
-    LA <- c('6037', '6059', '6065', '6071', '6111')
-    SF <- c('6001', '6013', '6075', '6081', '6041', '6085', '6069', 
-            '6077', '6099', '6095', '6097', '6087', '6047', '6055')
-    SD <- c('6073')
-    FN <- c('6019','6031','6039')
-    SC <- c('6067', '6061', '6113', '6017', '6101', '6115', '6057')
-    RD <- c('6089', '6103')
+        Beaver <- c('49001')
+    BoxElder <-('49003')
+    Cache <-('49005')
+    Carbon <-('49007')
+    Daggett <-('49009')
+    Davis <-('49011')
+    Duchesne <-('49013')
+    Emery <-('49015')
+    Garfield <-('49017')
+    Grand <-('49019')
+    Iron <-('49021')
+    Juab <-('49023')
+    Kane <-('49025')
+    Millard <-('49027')
+    Morgan <-('49029')
+    Piute <-('49031')
+    Rich <-('49033')
+    SaltLake <-('49035')
+    SanJuan <-('49037')
+    Sanpete <-('49039')
+    Sevier <-('49041')
+    Summit <-('49043')
+    Tooele <-('49045')
+    Uintah <-('49047')
+    Utah <-('49049')
+    Wasatch <-('49051')
+    Washington <-('49053')
+    Wayne <-('49055')
+    Weber <-('49057')
     
     data$new_metrop <- NA
-    data$new_metrop[data$geoid %in% LA] <- "LA"
-    data$new_metrop[data$geoid %in% SF] <- "SF"
-    data$new_metrop[data$geoid %in% SD] <- "SD"
-    data$new_metrop[data$geoid %in% FN] <- "FN"
-    data$new_metrop[data$geoid %in% SC] <- "SC"
-    data$new_metrop[data$geoid %in% RD] <- "RD"
+    data$new_metrop[data$geoid %in% Beaver] <- "Beaver"
+    data$new_metrop[data$geoid %in% BoxElder] <- "BoxElder"
+    data$new_metrop[data$geoid %in% Cache] <- "Cache"
+    data$new_metrop[data$geoid %in% Carbon] <- "Carbon"
+    data$new_metrop[data$geoid %in% Daggett] <- "Daggett"
+    data$new_metrop[data$geoid %in% Davis] <- "Davis"
+    data$new_metrop[data$geoid %in% Duchesne] <- "Duchesne"
+    data$new_metrop[data$geoid %in% Emery] <- "Emery"
+    data$new_metrop[data$geoid %in% Garfield] <- "Garfield"
+    data$new_metrop[data$geoid %in% Grand] <- "Grand"
+    data$new_metrop[data$geoid %in% Iron] <- "Iron"
+    data$new_metrop[data$geoid %in% Juab] <- "Juab"
+    data$new_metrop[data$geoid %in% Kane] <- "Kane"
+    data$new_metrop[data$geoid %in% Millard] <- "Millard"
+    data$new_metrop[data$geoid %in% Morgan] <- "Morgan"
+    data$new_metrop[data$geoid %in% Piute] <- "Piute"
+    data$new_metrop[data$geoid %in% Rich] <- "Rich"
+    data$new_metrop[data$geoid %in% SaltLake] <- "SaltLake"
+    data$new_metrop[data$geoid %in% SanJuan] <- "SanJuan"
+    data$new_metrop[data$geoid %in% Sanpete] <- "Sanpete"
+    data$new_metrop[data$geoid %in% Sevier] <- "Sevier"
+    data$new_metrop[data$geoid %in% Summit] <- "Summit"
+    data$new_metrop[data$geoid %in% Tooele] <- "Tooele"
+    data$new_metrop[data$geoid %in% Uintah] <- "Uintah"
+    data$new_metrop[data$geoid %in% Utah] <- "Utah"
+    data$new_metrop[data$geoid %in% Wasatch] <- "Wasatch"
+    data$new_metrop[data$geoid %in% Washington] <- "Washington"
+    data$new_metrop[data$geoid %in% Wayne] <- "Wayne"
+    data$new_metrop[data$geoid %in% Weber] <- "Weber"
     
     ##Update the labels
     data$metrop_labels <- NA
-    data$metrop_labels[data$new_metrop=="LA"] <- "Los Angeles"
-    data$metrop_labels[data$new_metrop=="SF"] <- "San Francisco"
-    data$metrop_labels[data$new_metrop=="SD"] <- "San Diego"
-    data$metrop_labels[data$new_metrop=="FN"] <- "Fresno"
-    data$metrop_labels[data$new_metrop=="SC"] <- "Sacremento"
-    data$metrop_labels[data$new_metrop=="RD"] <- "Redding"
+    data$metrop_labels[data$new_metrop=="Beaver"] <- "Beaver"
+    data$metrop_labels[data$new_metrop=="BoxElder"] <- "BoxElder"
+    data$metrop_labels[data$new_metrop=="Cache"] <- "Cache"
+    data$metrop_labels[data$new_metrop=="Carbon"] <- "Carbon"
+    data$metrop_labels[data$new_metrop=="Daggett"] <- "Daggett"
+    data$metrop_labels[data$new_metrop=="Davis"] <- "Davis"
+    data$metrop_labels[data$new_metrop=="Duchesne"] <- "Duchesne"
+    data$metrop_labels[data$new_metrop=="Emery"] <- "Emery"
+    data$metrop_labels[data$new_metrop=="Garfield"] <- "Garfield"
+    data$metrop_labels[data$new_metrop=="Grand"] <- "Grand"
+    data$metrop_labels[data$new_metrop=="Iron"] <- "Iron"
+    data$metrop_labels[data$new_metrop=="Juab"] <- "Juab"
+    data$metrop_labels[data$new_metrop=="Kane"] <- "Kane"
+    data$metrop_labels[data$new_metrop=="Millard"] <- "Millard"
+    data$metrop_labels[data$new_metrop=="Morgan"] <- "Morgan"
+    data$metrop_labels[data$new_metrop=="Piute"] <- "Piute"
+    data$metrop_labels[data$new_metrop=="Rich"] <- "Rich"
+    data$metrop_labels[data$new_metrop=="SaltLake"] <- "SaltLake"
+    data$metrop_labels[data$new_metrop=="SanJuan"] <- "SanJuan"
+    data$metrop_labels[data$new_metrop=="Sanpete"] <- "Sanpete"
+    data$metrop_labels[data$new_metrop=="Sevier"] <- "Sevier"
+    data$metrop_labels[data$new_metrop=="Summit"] <- "Summit"
+    data$metrop_labels[data$new_metrop=="Tooele"] <- "Tooele"
+    data$metrop_labels[data$new_metrop=="Uintah"] <- "Uintah"
+    data$metrop_labels[data$new_metrop=="Utah"] <- "Utah"
+    data$metrop_labels[data$new_metrop=="Wasatch"] <- "Wasatch"
+    data$metrop_labels[data$new_metrop=="Washington"] <- "Washington"
+    data$metrop_labels[data$new_metrop=="Wayne"] <- "Wayne"
+    data$metrop_labels[data$new_metrop=="Weber"] <- "Weber"
     data$metrop_labels <- as.factor(data$metrop_labels)
-    
+ 
     return(data)
 }
 
