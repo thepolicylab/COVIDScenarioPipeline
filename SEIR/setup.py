@@ -141,7 +141,7 @@ def seeding_draw(s, uid):
                               converters={'place': lambda x: str(x)},
                               parse_dates=['date'])
         for  _, row in seeding.iterrows():
-            importation[(row['date'].date()-s.ti).days][s.spatset.nodenames.index(row['place'])] = row['amount']
+            importation[(row['date'].date()-s.ti).days][s.spatset.nodenames.index(str(int(row['place'])))] = row['amount']
     else:
         raise NotImplementedError(f"unknown seeding method [got: {method}]")
     return importation
