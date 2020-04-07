@@ -10,9 +10,10 @@ sns.set(rc={'figure.figsize':(5,5)})
 
 #filterUSPS = ['MD']
 # filterUSPS = ['MD', 'DC', 'VA', 'DE', 'PA', 'NJ']
-filterUSPS = ['CA', 'OR', 'WA']
+filterUSPS = ['RI', 'MA', 'CT']
+foldername = '../../data/'
 # foldername = '../../data/around-maryland/'
-foldername = 'west-coast/'
+#foldername = 'west-coast/'
 #foldername = '../../data/maryland/'
 
 commute_data = pd.read_csv('united-states-commutes/commute_data.csv', dtype={'OFIPS': str, 'DFIPS': str})
@@ -58,4 +59,6 @@ mobility = mobility + mobility.T # Symetric mobility doubling fluxes mobility.su
 if not os.path.exists(foldername):
     os.makedirs(foldername)
 np.savetxt(f'{foldername}mobility.txt', mobility)
+geodata['geoid'] = geodata['geoid'].astype(int)
+geodata['pop2010'] = geodata['pop2010'].astype(int)
 geodata.to_csv(f'{foldername}geodata.csv', index_label='id')
